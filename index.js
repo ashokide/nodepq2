@@ -1,5 +1,11 @@
 const http = require('http')
-http.createServer((req, res) => {
-    res.write("Hello World")
-    res.end()
-}).listen(5000)
+try {
+    let port = process.env.PORT || 5000
+    http.createServer((req, res) => {
+        res.write("Hello World\n")
+        res.write(`Server Started in port : ${port}`)
+        res.end()
+    }).listen(port)
+} catch (e) {
+    console.log(e);
+}
